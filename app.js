@@ -167,11 +167,23 @@ function downloadControl(skill, cssClass, label) {
   }
   return '<button '+attributes+' data-download="'+skill.id+'">'+label+'</button>';
 }
+const codexPlugins = {
+  remotion: 'https://www.remotion.dev/docs/ai/codex-plugin',
+  impeccable: 'https://impeccable.style/#install'
+};
+function codexInstallLabel(skill) {
+  if (!skill.agentes.includes('Codex')) return '';
+  const official = codexPlugins[skill.id];
+  return official
+    ? '<a class="text-link" href="'+official+'">Instalar desde Codex</a>'
+    : '<span>Agregar SKILL.md al proyecto</span>';
+}
 function card(skill) {
   return '<article class="card"><div class="card-top"><span class="tile" data-cat="'+skill.categoria+'">'+icon(skill.categoria)+'</span><span class="category">'+skill.categoria+'</span></div>'+
     '<h3><a href="'+skillLink(skill)+'">'+escape(skill.nombre)+'</a></h3><p>'+escape(skill.descripcion)+'</p>'+
     '<div class="tags">'+skill.etiquetas.map(tag => '<span>'+escape(tag)+'</span>').join('')+'</div>'+
     '<div class="meta">'+skill.agentes.join(' · ')+' <span aria-hidden="true">/</span> '+skill.nivel+'</div>'+
+    (skill.agentes.includes('Codex') ? '<div class="meta">'+codexInstallLabel(skill)+'</div>' : '')+
     '<div class="card-bottom">'+countLabel(skill)+
     downloadControl(skill,'button secondary','Descargar')+'</div></article>';
 }
@@ -287,6 +299,7 @@ function detail(skill) {
   return page(skill.nombre, skill.descripcion,
     '<p class="meta">'+skill.categoria+' · '+skill.nivel+' · '+skill.agentes.join(' · ')+'</p>'+
     '<p>'+escape(skill.instrucciones)+'</p>'+
+    (skill.agentes.includes('Codex') ? '<p>'+codexInstallLabel(skill)+'</p>' : '')+
     (skill.fuente ? '<p>El archivo descargable es una guía rápida de Cocorico MD. <a class="text-link" href="'+skill.fuente+'">Obtener la skill oficial</a></p>' : '')+
     '<div class="actions">'+downloadControl(skill,'button',icon('download')+'Descargar Markdown')+copyButton('skill',skill.contenido,'Copiar contenido')+'</div>'+
     '<p class="meta">Añadida el '+formatDate.format(new Date(skill.fecha))+' · '+countLabel(skill)+'</p>'+
