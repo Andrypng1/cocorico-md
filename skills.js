@@ -16,7 +16,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-23",
-    "descargas": 0,
     "entrada": "Revisa mi catálogo en GitHub Pages. Las fichas usan rutas como /#/skill/auditoria-seo.",
     "salida": "Prioridad alta: las fichas dependen de fragmentos. Genera una URL HTML por ficha, enlázala desde el catálogo y comprueba su rastreo en Search Console.",
     "instrucciones": "Audita páginas con evidencias verificables. Separa los bloqueos de rastreo e indexación de las mejoras de contenido y entrega un plan por prioridad.",
@@ -25,7 +24,8 @@ const skills = [
       "Pide una auditoría inicial sin cambios y confirma las páginas que deben indexarse.",
       "Valida los hallazgos y aplica primero los bloqueos de mayor impacto."
     ],
-    "contenido": "---\nname: auditoria-seo\ndescription: Revisa si un sitio puede rastrearse e indexarse y prioriza mejoras con evidencias por URL.\n---\n\n# Auditoría SEO\n\n## Flujo\n1. Pide la URL principal, las páginas que deben aparecer en Google y el público. Si solo tienes archivos locales, identifica cuáles comprobaciones requieren el sitio público o Search Console.\n2. Revisa respuestas HTTP, robots.txt, meta robots, canonical, enlaces internos y sitemap. Distingue las restricciones al rastreo de las directivas de indexación.\n3. Comprueba si cada página importante se abre en una URL independiente. Revisa títulos únicos y descriptivos, encabezados claros y descripciones acordes al contenido.\n4. Por cada hallazgo entrega prioridad, URL, evidencia, corrección y forma de comprobarla. Indica qué requiere acceso a Search Console y evita prometer posiciones.\n\n## Referencias\n- https://developers.google.com/search/docs/fundamentals/seo-starter-guide\n- https://developers.google.com/search/docs/crawling-indexing/url-structure\n"
+    "contenido": "---\nname: auditoria-seo\ndescription: Revisa si un sitio puede rastrearse e indexarse y prioriza mejoras con evidencias por URL.\n---\n\n# Auditoría SEO\n\n## Flujo\n1. Pide la URL principal, las páginas que deben aparecer en Google y el público. Si solo tienes archivos locales, identifica cuáles comprobaciones requieren el sitio público o Search Console.\n2. Revisa respuestas HTTP, robots.txt, meta robots, canonical, enlaces internos y sitemap. Distingue las restricciones al rastreo de las directivas de indexación.\n3. Comprueba si cada página importante se abre en una URL independiente. Revisa títulos únicos y descriptivos, encabezados claros y descripciones acordes al contenido.\n4. Por cada hallazgo entrega prioridad, URL, evidencia, corrección y forma de comprobarla. Indica qué requiere acceso a Search Console y evita prometer posiciones.\n\n## Referencias\n- https://developers.google.com/search/docs/fundamentals/seo-starter-guide\n- https://developers.google.com/search/docs/crawling-indexing/url-structure\n",
+    "archivo": "auditoria-seo.md"
   },
   {
     "id": "diseno-3d-blender",
@@ -45,7 +45,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-23",
-    "descargas": 0,
     "entrada": "Diseña una maceta de 18 cm con bordes redondeados para un visor web.",
     "salida": "Plan de modelado con escala real, bisel editable y material mate. Entrega prevista: archivo .blend y .glb, con escala y materiales comprobados tras reimportar.",
     "instrucciones": "Define dimensiones y destino, bloquea la silueta, modela con modificadores editables y revisa la escala, las normales y los materiales antes de exportar.",
@@ -54,7 +53,8 @@ const skills = [
       "Pide al agente un plan de modelado y acuerda qué herramientas puede ejecutar.",
       "Revisa la malla en Blender y comprueba el GLB en el visor de destino."
     ],
-    "contenido": "---\nname: diseno-3d-blender\ndescription: Convierte un encargo en un modelo 3D editable y prepara una exportación GLB para la web.\n---\n\n# Diseño 3D con Blender\n\n## Flujo\n1. Confirma referencias, medidas, destino del modelo y presupuesto de geometría. Para web, acuerda el límite de tamaño y el formato de entrega.\n2. Empieza con formas simples a escala real. Verifica proporciones y silueta antes de agregar detalles.\n3. Usa modificadores editables cuando ayuden. En aristas duras, prueba un bisel con los segmentos necesarios para la distancia de cámara. Revisa normales, sombreado y malla.\n4. Conserva el archivo .blend. Para GLB, usa materiales PBR compatibles y exporta solo los objetos requeridos. Reimporta en una escena vacía o abre el archivo en el visor de destino para comprobar escala, orientación y aspecto.\n5. Si el agente no tiene acceso a Blender, entrega pasos reproducibles y marca las comprobaciones pendientes de realizar.\n\n## Referencias\n- https://docs.blender.org/manual/en/5.1/addons/import_export/scene_gltf2.html\n"
+    "contenido": "---\nname: diseno-3d-blender\ndescription: Convierte un encargo en un modelo 3D editable y prepara una exportación GLB para la web.\n---\n\n# Diseño 3D con Blender\n\n## Flujo\n1. Confirma referencias, medidas, destino del modelo y presupuesto de geometría. Para web, acuerda el límite de tamaño y el formato de entrega.\n2. Empieza con formas simples a escala real. Verifica proporciones y silueta antes de agregar detalles.\n3. Usa modificadores editables cuando ayuden. En aristas duras, prueba un bisel con los segmentos necesarios para la distancia de cámara. Revisa normales, sombreado y malla.\n4. Conserva el archivo .blend. Para GLB, usa materiales PBR compatibles y exporta solo los objetos requeridos. Reimporta en una escena vacía o abre el archivo en el visor de destino para comprobar escala, orientación y aspecto.\n5. Si el agente no tiene acceso a Blender, entrega pasos reproducibles y marca las comprobaciones pendientes de realizar.\n\n## Referencias\n- https://docs.blender.org/manual/en/5.1/addons/import_export/scene_gltf2.html\n",
+    "archivo": "diseno-3d-blender.md"
   },
   {
     "id": "plan-semanal",
@@ -72,7 +72,6 @@ const skills = [
     ],
     "nivel": "Básico",
     "fecha": "2026-11-04",
-    "descargas": 1480,
     "entrada": "Tengo 5 h. Debo enviar una propuesta el jueves y responder cuatro correos.",
     "salida": "Lunes: 30 min para correos. Martes y miércoles: 2 h por día para la propuesta. Jueves: 30 min para revisar y enviar.",
     "instrucciones": "Pregunta por fechas límite, tiempo disponible y dependencias. Prioriza hasta tres resultados semanales. Reserva tiempo para imprevistos y marca qué tareas se pueden aplazar.",
@@ -80,7 +79,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Tengo 5 h. Debo enviar una propuesta el jueves y responder cuatro correos.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "plan-semanal.md"
   },
   {
     "id": "revision-codigo",
@@ -98,7 +98,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-06",
-    "descargas": 1230,
     "entrada": "Revisa un diff que añade una función de paginación.",
     "salida": "Hallazgo: el cursor vacío repite la primera página. Prueba sugerida: solicitar una página después del último elemento.",
     "instrucciones": "Revisa solo el diff y su contexto necesario. Prioriza regresiones reproducibles. Por hallazgo da ubicación, impacto y un caso de prueba. Distingue dudas de errores confirmados.",
@@ -106,7 +105,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Revisa un diff que añade una función de paginación.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "revision-codigo.md"
   },
   {
     "id": "editor-claro",
@@ -123,7 +123,6 @@ const skills = [
     ],
     "nivel": "Básico",
     "fecha": "2026-11-08",
-    "descargas": 1085,
     "entrada": "Procederemos a efectuar la revisión del documento en el transcurso de la semana.",
     "salida": "Revisaremos el documento esta semana.",
     "instrucciones": "Identifica la audiencia y el propósito. Conserva hechos, cifras y compromisos. Acorta frases, usa verbos concretos y devuelve primero el texto editado.",
@@ -131,7 +130,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Procederemos a efectuar la revisión del documento en el transcurso de la semana.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "editor-claro.md"
   },
   {
     "id": "limpieza-csv",
@@ -149,7 +149,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-11",
-    "descargas": 742,
     "entrada": "fecha,nombre\n04/11/26,Ana\n04/11/26,Ana",
     "salida": "Una fila duplicada. Confirmar si la fecha está en formato día/mes antes de convertirla a ISO.",
     "instrucciones": "Inspecciona una muestra. Pregunta por formatos ambiguos. Propón reglas de normalización y conserva un registro de filas afectadas. Crea una copia de salida y conserva el original.",
@@ -157,7 +156,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «fecha,nombre 04/11/26,Ana 04/11/26,Ana»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "limpieza-csv.md"
   },
   {
     "id": "minutas",
@@ -174,7 +174,6 @@ const skills = [
     ],
     "nivel": "Básico",
     "fecha": "2026-11-13",
-    "descargas": 902,
     "entrada": "Ana envía el borrador el viernes. Se aprueba la opción B. Falta confirmar presupuesto.",
     "salida": "Decisión: opción B. Acción: Ana enviará el borrador el viernes. Pendiente: confirmar el presupuesto.",
     "instrucciones": "Separa decisiones confirmadas, acciones y preguntas abiertas. Registra responsables y fechas solo si aparecen en las notas. Marca los datos faltantes como por confirmar.",
@@ -182,7 +181,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Ana envía el borrador el viernes. Se aprueba la opción B. Falta confirmar presupuesto.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "minutas.md"
   },
   {
     "id": "flujo-archivos",
@@ -199,7 +199,6 @@ const skills = [
     ],
     "nivel": "Avanzado",
     "fecha": "2026-11-15",
-    "descargas": 358,
     "entrada": "Clasifica los PDF en esta carpeta según año y tema.",
     "salida": "Propuesta: organizar por año/tema; simular cambios y revisar dos nombres duplicados antes de aplicar.",
     "instrucciones": "Define origen y destino. Imprime primero un plan sin cambios. Detecta colisiones y prepara un registro reversible. Aplica el plan únicamente con aprobación explícita.",
@@ -207,7 +206,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Clasifica los PDF en esta carpeta según año y tema.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "flujo-archivos.md"
   },
   {
     "id": "notas-version",
@@ -225,7 +225,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-17",
-    "descargas": 516,
     "entrada": "Cambios: exportación CSV y corrección de un error en filtros.",
     "salida": "Ya puedes exportar resultados en CSV. Corregimos un error que descartaba el filtro al cambiar de página.",
     "instrucciones": "Agrupa cambios en novedades, mejoras y correcciones. Explica el efecto visible. Separa cambios incompatibles y omite detalles internos irrelevantes.",
@@ -233,7 +232,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Cambios: exportación CSV y corrección de un error en filtros.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "notas-version.md"
   },
   {
     "id": "analisis-tablas",
@@ -250,7 +250,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-19",
-    "descargas": 429,
     "entrada": "Ventas mensuales: enero 40, febrero 42, marzo 61.",
     "salida": "Marzo subió un 45,2 % frente a febrero. Comprueba si hubo una campaña o cambios de registro.",
     "instrucciones": "Identifica unidades y periodos. Calcula cambios absolutos y relativos. Muestra operaciones verificables, explica limitaciones y evita atribuir causalidad sin evidencia.",
@@ -258,7 +257,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «Ventas mensuales: enero 40, febrero 42, marzo 61.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "analisis-tablas.md"
   },
   {
     "id": "pruebas-borde",
@@ -276,7 +276,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-22",
-    "descargas": 285,
     "entrada": "El nombre de usuario acepta entre 3 y 20 caracteres.",
     "salida": "Probar 2, 3, 20 y 21 caracteres. Añadir un caso con entrada vacía y verificar qué ocurre con los espacios.",
     "instrucciones": "Enumera reglas comprobables. Diseña casos positivos, de frontera y negativos. Especifica entrada y salida esperada. Señala requisitos ambiguos por separado.",
@@ -284,7 +283,8 @@ const skills = [
     "pasos": [
       "Pide al agente: «El nombre de usuario acepta entre 3 y 20 caracteres.»",
       "Compara su respuesta con el ejemplo y añade detalles de tu caso si hacen falta."
-    ]
+    ],
+    "archivo": "pruebas-borde.md"
   },
   {
     "id": "remotion",
@@ -302,7 +302,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-23",
-    "descargas": 0,
     "entrada": "Crea un video vertical de 8 segundos con título animado y cierre de marca.",
     "salida": "Una composición de 1080 × 1920 a 30 fps y 240 fotogramas, con título de entrada y cierre integrado.",
     "comando": "npx skills add remotion-dev/skills",
@@ -313,7 +312,8 @@ const skills = [
       "Abre o vuelve a cargar el proyecto en tu agente.",
       "Pídele que use la skill y prueba la entrada de la vista previa.",
       "Compara el resultado con el ejemplo y ajusta el encargo a tu proyecto."
-    ]
+    ],
+    "archivo": "remotion.md"
   },
   {
     "id": "impeccable",
@@ -332,7 +332,6 @@ const skills = [
     ],
     "nivel": "Intermedio",
     "fecha": "2026-11-23",
-    "descargas": 0,
     "entrada": "Revisa la página de catálogo y mejora su legibilidad en pantallas pequeñas.",
     "salida": "Una revisión con prioridades concretas y una interfaz comprobada en móvil y escritorio.",
     "comando": "npx impeccable install",
@@ -343,6 +342,7 @@ const skills = [
       "Abre o vuelve a cargar el proyecto en tu agente.",
       "Pídele que use la skill y prueba la entrada de la vista previa.",
       "Compara el resultado con el ejemplo y ajusta el encargo a tu proyecto."
-    ]
+    ],
+    "archivo": "impeccable.md"
   }
 ];

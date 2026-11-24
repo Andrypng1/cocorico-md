@@ -49,6 +49,11 @@ const findSkill = id => skills.find(skill => skill.id === id);
 const explore = params => '#/explorar' + (params ? '?' + new URLSearchParams(params) : '');
 const skillLink = skill => '#/skill/' + skill.id;
 const formatCount = new Intl.NumberFormat('es-ES');
+const releaseTag = 'skills-v1';
+const repository = 'Andrypng1/cocorico-md';
+const releaseAssets = new Map();
+let countsPending = true;
+let refreshPopularity = () => {};
 const formatDate = new Intl.DateTimeFormat('es', {dateStyle:'long', timeZone:'UTC'});
 let copyValues = new Map();
 let toastTimer;
@@ -146,16 +151,36 @@ function bindSearch(onInput) {
   });
   return {input, hide};
 }
+function downloadCount(skill) {
+  const total = releaseAssets.get(skill.id);
+  if (total === undefined) return countsPending ? 'Cargando descargas…' : 'Recuento no disponible';
+  return formatCount.format(total) + (total === 1 ? ' descarga' : ' descargas');
+}
+function countLabel(skill) {
+  return '<span class="count" data-count="'+skill.id+'">'+escape(downloadCount(skill))+'</span>';
+}
+function downloadControl(skill, cssClass, label) {
+  const attributes = 'class="'+cssClass+'" aria-label="Descargar '+escape(skill.nombre)+'"';
+  if (skill.archivo || releaseAssets.has(skill.id)) {
+    const file = skill.archivo || skill.id+'.md';
+    return '<a '+attributes+' href="https://github.com/'+repository+'/releases/download/'+releaseTag+'/'+encodeURIComponent(file)+'">'+label+'</a>';
+  }
+  return '<button '+attributes+' data-download="'+skill.id+'">'+label+'</button>';
+}
 function card(skill) {
   return '<article class="card"><div class="card-top"><span class="tile" data-cat="'+skill.categoria+'">'+icon(skill.categoria)+'</span><span class="category">'+skill.categoria+'</span></div>'+
     '<h3><a href="'+skillLink(skill)+'">'+escape(skill.nombre)+'</a></h3><p>'+escape(skill.descripcion)+'</p>'+
     '<div class="tags">'+skill.etiquetas.map(tag => '<span>'+escape(tag)+'</span>').join('')+'</div>'+
     '<div class="meta">'+skill.agentes.join(' · ')+' <span aria-hidden="true">/</span> '+skill.nivel+'</div>'+
-    '<div class="card-bottom"><span class="count" title="Descargas de ejemplo">'+icon('download')+' '+formatCount.format(skill.descargas)+' <span class="sr-only">descargas de ejemplo</span></span>'+
-    '<button class="button secondary" data-download="'+skill.id+'" aria-label="Descargar '+escape(skill.nombre)+'">Descargar</button></div></article>';
+    '<div class="card-bottom">'+countLabel(skill)+
+    downloadControl(skill,'button secondary','Descargar')+'</div></article>';
 }
 function sorted(items, order) {
-  return [...items].sort((a, b) => order === 'fecha' ? b.fecha.localeCompare(a.fecha) : b.descargas - a.descargas);
+  return [...items].sort((a, b) => {
+    const recent = b.fecha.localeCompare(a.fecha);
+    if (order === 'fecha') return recent;
+    return (releaseAssets.get(b.id) ?? -1) - (releaseAssets.get(a.id) ?? -1) || recent;
+  });
 }
 function skillSection(title, items, link) {
   return '<section class="section"><div class="section-head"><h2>'+title+'</h2>' + (link ? '<a class="text-link" href="'+link+'">Ver catálogo</a>' : '') + '</div><div class="grid">'+items.map(card).join('')+'</div></section>';
@@ -166,8 +191,8 @@ function home() {
     '<div class="categories" aria-label="Categorías destacadas">'+categories.map(category =>
       '<a class="chip" href="'+explore({categoria:category})+'">'+icon(category)+category+'</a>').join('')+'</div>'+
     '<div class="orbit" aria-hidden="true"></div><img class="mascot" src="rooster.svg" alt="Gallo de plumaje naranja y cola violeta" width="300" height="260"></section>'+
-    skillSection('Skills populares', sorted(skills).slice(0, 3), explore())+
     skillSection('Recién añadidas', sorted(skills, 'fecha').slice(0, 3), explore({orden:'fecha'}))+
+    '<div id="popular-skills">'+skillSection('Skills populares', sorted(skills).slice(0, 3), explore())+'</div>'+
     '<section class="section"><div class="section-head"><h2>Cómo funciona</h2><a class="text-link" href="#/tutoriales/primera-skill">Guía de instalación</a></div>'+
     '<ol class="how"><li><span class="step-number">1</span><div><h3>Busca</h3><p>Elige una skill y revisa su ejemplo.</p></div></li>'+
     '<li><span class="step-number">2</span><div><h3>Descarga</h3><p>Guarda el archivo Markdown en un clic.</p></div></li>'+
@@ -220,6 +245,9 @@ function bindCatalog() {
     search.input.focus();
   });
   update();
+  return () => {
+    if (!results.contains(document.activeElement)) update();
+  };
 }
 
 function installation(skill, agent) {
@@ -260,8 +288,8 @@ function detail(skill) {
     '<p class="meta">'+skill.categoria+' · '+skill.nivel+' · '+skill.agentes.join(' · ')+'</p>'+
     '<p>'+escape(skill.instrucciones)+'</p>'+
     (skill.fuente ? '<p>El archivo descargable es una guía rápida de Cocorico MD. <a class="text-link" href="'+skill.fuente+'">Obtener la skill oficial</a></p>' : '')+
-    '<div class="actions"><button class="button" data-download="'+skill.id+'">'+icon('download')+'Descargar SKILL.md</button>'+copyButton('skill',skill.contenido,'Copiar contenido')+'</div>'+
-    '<p class="meta">Añadida el '+formatDate.format(new Date(skill.fecha))+' · '+formatCount.format(skill.descargas)+' descargas de ejemplo</p>'+
+    '<div class="actions">'+downloadControl(skill,'button',icon('download')+'Descargar Markdown')+copyButton('skill',skill.contenido,'Copiar contenido')+'</div>'+
+    '<p class="meta">Añadida el '+formatDate.format(new Date(skill.fecha))+' · '+countLabel(skill)+'</p>'+
     '<section class="section"><h2>Vista previa</h2><div class="examples"><div class="panel"><h3>Entrada</h3><pre>'+escape(skill.entrada)+'</pre></div><div class="panel"><h3>Salida</h3><pre>'+escape(skill.salida)+'</pre></div></div>'+
     '<details class="panel code"><summary>Ver archivo SKILL.md</summary><pre><code>'+escape(skill.contenido)+'</code></pre></details></section>'+
     '<section class="section"><h2>Cómo aplicarla</h2><div class="tabs" role="group" aria-label="Agente para el tutorial">'+skill.agentes.map((agent,i)=>
@@ -368,11 +396,44 @@ function render(focus = false) {
     if (link.dataset.nav === (view === 'skill' ? 'explorar' : view)) link.setAttribute('aria-current','page');
     else link.removeAttribute('aria-current');
   });
-  if (!view) bindSearch();
-  if (view === 'explorar') bindCatalog();
+  refreshPopularity = () => {};
+  if (!view) {
+    bindSearch();
+    refreshPopularity = () => {
+      const popular = main.querySelector('#popular-skills');
+      if (!popular.contains(document.activeElement)) {
+        popular.innerHTML = skillSection('Skills populares',sorted(skills).slice(0,3),explore());
+      }
+    };
+  }
+  if (view === 'explorar') refreshPopularity = bindCatalog();
   if (view === 'enviar') bindSubmit();
   if (focus) { window.scrollTo(0,0); main.focus({preventScroll:true}); }
 }
 window.addEventListener('hashchange', () => render(true));
 render();
+
+async function loadDownloadCounts() {
+  try {
+    const response = await fetch('https://api.github.com/repos/'+repository+'/releases/tags/'+releaseTag, {
+      signal: AbortSignal.timeout(5000)
+    });
+    if (!response.ok) return;
+    const release = await response.json();
+    const assets = new Map(release.assets.map(asset => [asset.name,asset.download_count]));
+    for (const skill of skills) {
+      const total = assets.get(skill.archivo || skill.id+'.md');
+      if (Number.isSafeInteger(total) && total >= 0) releaseAssets.set(skill.id,total);
+    }
+  } catch {
+    // Downloads still use GitHub if its public counts API is unavailable.
+  } finally {
+    countsPending = false;
+    refreshPopularity();
+    main.querySelectorAll('[data-count]').forEach(label => {
+      label.textContent = downloadCount(findSkill(label.dataset.count));
+    });
+  }
+}
+loadDownloadCounts();
 
