@@ -1,5 +1,62 @@
 const skills = [
   {
+    "id": "auditoria-seo",
+    "nombre": "Auditoría SEO",
+    "descripcion": "Revisa si un sitio puede rastrearse e indexarse y prioriza mejoras con evidencias por URL.",
+    "categoria": "Código",
+    "etiquetas": [
+      "seo",
+      "indexación",
+      "search console"
+    ],
+    "agentes": [
+      "Codex",
+      "Claude",
+      "ChatGPT"
+    ],
+    "nivel": "Intermedio",
+    "fecha": "2026-11-23",
+    "descargas": 0,
+    "entrada": "Revisa mi catálogo en GitHub Pages. Las fichas usan rutas como /#/skill/auditoria-seo.",
+    "salida": "Prioridad alta: las fichas dependen de fragmentos. Genera una URL HTML por ficha, enlázala desde el catálogo y comprueba su rastreo en Search Console.",
+    "instrucciones": "Audita páginas con evidencias verificables. Separa los bloqueos de rastreo e indexación de las mejoras de contenido y entrega un plan por prioridad.",
+    "pasos": [
+      "Abre tu proyecto o proporciona las URLs que quieres revisar.",
+      "Pide una auditoría inicial sin cambios y confirma las páginas que deben indexarse.",
+      "Valida los hallazgos y aplica primero los bloqueos de mayor impacto."
+    ],
+    "contenido": "---\nname: auditoria-seo\ndescription: Revisa si un sitio puede rastrearse e indexarse y prioriza mejoras con evidencias por URL.\n---\n\n# Auditoría SEO\n\n## Flujo\n1. Pide la URL principal, las páginas que deben aparecer en Google y el público. Si solo tienes archivos locales, identifica cuáles comprobaciones requieren el sitio público o Search Console.\n2. Revisa respuestas HTTP, robots.txt, meta robots, canonical, enlaces internos y sitemap. Distingue las restricciones al rastreo de las directivas de indexación.\n3. Comprueba si cada página importante se abre en una URL independiente. Revisa títulos únicos y descriptivos, encabezados claros y descripciones acordes al contenido.\n4. Por cada hallazgo entrega prioridad, URL, evidencia, corrección y forma de comprobarla. Indica qué requiere acceso a Search Console y evita prometer posiciones.\n\n## Referencias\n- https://developers.google.com/search/docs/fundamentals/seo-starter-guide\n- https://developers.google.com/search/docs/crawling-indexing/url-structure\n"
+  },
+  {
+    "id": "diseno-3d-blender",
+    "nombre": "Diseño 3D con Blender",
+    "descripcion": "Convierte un encargo en un modelo 3D editable y prepara una exportación GLB para la web.",
+    "categoria": "Código",
+    "etiquetas": [
+      "diseño 3d",
+      "blender",
+      "glb",
+      "modelado"
+    ],
+    "agentes": [
+      "Codex",
+      "Claude",
+      "ChatGPT"
+    ],
+    "nivel": "Intermedio",
+    "fecha": "2026-11-23",
+    "descargas": 0,
+    "entrada": "Diseña una maceta de 18 cm con bordes redondeados para un visor web.",
+    "salida": "Plan de modelado con escala real, bisel editable y material mate. Entrega prevista: archivo .blend y .glb, con escala y materiales comprobados tras reimportar.",
+    "instrucciones": "Define dimensiones y destino, bloquea la silueta, modela con modificadores editables y revisa la escala, las normales y los materiales antes de exportar.",
+    "pasos": [
+      "Abre el proyecto de Blender o proporciona referencias, medidas y formato de entrega.",
+      "Pide al agente un plan de modelado y acuerda qué herramientas puede ejecutar.",
+      "Revisa la malla en Blender y comprueba el GLB en el visor de destino."
+    ],
+    "contenido": "---\nname: diseno-3d-blender\ndescription: Convierte un encargo en un modelo 3D editable y prepara una exportación GLB para la web.\n---\n\n# Diseño 3D con Blender\n\n## Flujo\n1. Confirma referencias, medidas, destino del modelo y presupuesto de geometría. Para web, acuerda el límite de tamaño y el formato de entrega.\n2. Empieza con formas simples a escala real. Verifica proporciones y silueta antes de agregar detalles.\n3. Usa modificadores editables cuando ayuden. En aristas duras, prueba un bisel con los segmentos necesarios para la distancia de cámara. Revisa normales, sombreado y malla.\n4. Conserva el archivo .blend. Para GLB, usa materiales PBR compatibles y exporta solo los objetos requeridos. Reimporta en una escena vacía o abre el archivo en el visor de destino para comprobar escala, orientación y aspecto.\n5. Si el agente no tiene acceso a Blender, entrega pasos reproducibles y marca las comprobaciones pendientes de realizar.\n\n## Referencias\n- https://docs.blender.org/manual/en/5.1/addons/import_export/scene_gltf2.html\n"
+  },
+  {
     "id": "plan-semanal",
     "nombre": "Planificador semanal",
     "descripcion": "Ordena pendientes por impacto y conviértelos en un plan semanal realista.",
@@ -289,4 +346,3 @@ const skills = [
     ]
   }
 ];
-
